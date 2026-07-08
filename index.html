@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batsutsi the Forest Bird</title>
+<meta name="description" content="Tap her cheek for a gentle squish — a tiny interactive bird toy.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="scene">
+  <header class="scene__header">
+    <p class="eyebrow">a tiny interactive</p>
+    <h1>Batsutsi the Forest Bird</h1>
+    <p class="sub">She loves a good cheek squish. Go on, give it a try.</p>
+  </header>
+
+  <div class="stage">
+    <div class="stage__frame">
+      <img src="assets/image.png" alt="Cartoon bluebird with big fluffy cheeks, perched on a mossy branch" id="bird-image" draggable="false">
+      <button type="button" class="cheek-hit" id="cheek-hit" aria-label="Squish her cheek">
+        <span class="cheek-ring" aria-hidden="true"></span>
+      </button>
+      <div class="fx-layer" id="fx-layer" aria-hidden="true"></div>
+    </div>
+
+    <div class="guide" id="guide" role="dialog" aria-label="How to play">
+      <div class="guide__pointer" aria-hidden="true">👉</div>
+      <p><strong>Tap her cheek</strong> — the fluffy pink one — to give it a gentle squish.</p>
+      <button type="button" id="guide-dismiss">Got it</button>
+    </div>
+  </div>
+
+  <div class="hud">
+    <div class="counter">
+      <span class="counter__label">Squishes</span>
+      <span class="counter__value" id="squish-count">0</span>
+    </div>
+    <button type="button" class="mute-btn" id="mute-btn" aria-pressed="false">🔊 <span>Sound on</span></button>
+  </div>
+
+  <footer class="scene__footer">
+  </footer>
+</main>
+
+<audio id="audio-bird" src="assets/bird.wav" preload="auto"></audio>
+<audio id="audio-hint" src="assets/hint.mp3" preload="auto"></audio>
+
+<script src="script.js" defer></script>
+</body>
+</html>
