@@ -17,7 +17,7 @@
   --blush: #f0a99d;
   --blush-deep: #e2887c;
   --sky: #86aecb;
-  --gold: #eeb454;
+  --gold: #e5ff00;
   --ink: #2c3527;
   --ring: 0 0 0 3px var(--paper), 0 0 0 6px var(--moss);
 
@@ -319,6 +319,50 @@ body {
   color: #8a8065;
 }
 
+/* --- Animated Tooltip Hint --- */
+.click-hint {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none; /* Crucial: allows clicks to pass through */
+  font-family: 'Baloo 2', 'Nunito', sans-serif;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.click-hint.hidden {
+  opacity: 0;
+}
+
+.hint-text {
+  background: var(--paper);
+  border: 2px solid var(--gold);
+  color: var(--moss-dark);
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(40, 40, 20, 0.15);
+}
+
+.hint-arrow {
+  font-size: 1.8rem;
+  color: var(--gold);
+  margin-top: -0.3rem;
+  animation: bounce-arrow 1s ease-in-out infinite;
+  text-shadow: 0 2px 4px rgba(40, 40, 20, 0.1);
+}
+
+@keyframes bounce-arrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
 @media (max-width: 420px) {
   .hud { flex-wrap: wrap; }
 }
@@ -328,7 +372,8 @@ body {
   .cheek-ring,
   .guide__pointer,
   .counter__value.bump,
-  .fx-particle {
+  .fx-particle,
+  .hint-arrow {
     animation: none !important;
   }
 }

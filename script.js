@@ -20,6 +20,9 @@
   var muteBtn = document.getElementById('mute-btn');
   var audioBird = document.getElementById('audio-bird');
   var audioHint = document.getElementById('audio-hint');
+  
+  var clickHint = document.getElementById('click-hint');
+  var hintText = clickHint ? clickHint.querySelector('.hint-text') : null;
 
   if (!cheekBtn || !image) return; // markup not ready, bail safely
 
@@ -33,6 +36,7 @@
 
   if (alreadySeenGuide) {
     if (guide) guide.hidden = true;
+    if (clickHint) clickHint.classList.add('hidden'); // Hide floating hint if returning
   } else if (stage) {
     stage.classList.add('is-onboarding');
   }
@@ -97,6 +101,16 @@
     }
 
     squishCount += 1;
+
+    // Handle the animated hint text logic
+    if (clickHint && !clickHint.classList.contains('hidden')) {
+      if (squishCount === 1) {
+        hintText.textContent = 'Again!'; // Change text after first click
+      } else if (squishCount >= 6) {
+        clickHint.classList.add('hidden'); // Fade out after 6 total clicks (1 initial + 5 "Again"s)
+      }
+    }
+
     if (countEl) {
       countEl.textContent = String(squishCount);
       countEl.classList.remove('bump');
