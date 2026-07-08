@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Batsutsi the Forest Bird — interaction logic
+   Batsutsi the Forest Bird - interaction logic
    This file is only ever requested by the browser after index.html's
    access-gate script has validated the URL token. It never runs on its own.
    ========================================================================== */
